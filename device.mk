@@ -197,6 +197,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
@@ -222,6 +223,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecomm=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.dualmic.config=endfire \
+    persist.audio.in_mmap_delay_micros=100 \
+    persist.audio.out_mmap_delay_micros=150 \
     ro.config.vc_call_vol_steps=7 \
     ro.config.media_vol_steps=25 \
 
@@ -791,3 +794,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # GTS ACSA(Agreement for Carrier Service Application) verification
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.acsa=true
+
+# Increment the SVN for any official public releases
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.vendor.build.svn=3
