@@ -1,5 +1,4 @@
-//
-// Copyright (C) 2018 The Android Open Source Project
+// Copyright (C) 2017 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,29 +11,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 
-cc_library_static {
-    name: "librecovery_ui_bonito",
-    owner: "google",
-    cflags: [
-        "-Wall",
-        "-Wextra",
-        "-Werror",
-        "-pedantic",
+cc_library_shared {
+    name: "libqcomvoiceprocessingdescriptors",
+    srcs: ["voice_processing_descriptors.c"],
+    header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
     ],
-    srcs: [
-        "recovery_ui.cpp",
-    ],
-
-    static_libs: [
-        "libbase",
-        "libbootloader_message",
-        "libnos_for_recovery",
-        "libnos_citadel_for_recovery",
-    ],
-
-    shared_libs: [
-        "librecovery_ui",
-    ],
+    relative_install_path: "soundfx",
+    owner: "qcom",
+    proprietary: true,
 }

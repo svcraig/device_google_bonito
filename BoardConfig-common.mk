@@ -80,19 +80,18 @@ AB_OTA_PARTITIONS += \
     system \
     vbmeta \
     dtbo \
-    product
+    product \
+    system_ext
 
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/google/bonito/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/google/bonito/fstab.hardware
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_UI_LIB := \
-    librecovery_ui_bonito \
-    libnos_citadel_for_recovery \
-    libnos_for_recovery \
-    libbootloader_message \
+    librecovery_ui_pixel \
     libfstab
 
 # system.img
@@ -110,7 +109,8 @@ BOARD_SUPER_PARTITION_GROUPS := google_dynamic_partitions
 BOARD_GOOGLE_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     system \
     vendor \
-    product
+    product \
+    system_ext
 
 BOARD_SUPER_PARTITION_SIZE := 4072669184
 BOARD_SUPER_PARTITION_METADATA_DEVICE := system
@@ -124,7 +124,6 @@ BOARD_GOOGLE_DYNAMIC_PARTITIONS_SIZE := 4068474880
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_ROOT_EXTRA_SYMLINKS := /mnt/vendor/persist:/persist
-BOARD_ROOT_EXTRA_SYMLINKS += /vendor/firmware_mnt:/firmware
 BOARD_ROOT_EXTRA_SYMLINKS += /vendor/dsp:/dsp
 
 include device/google/bonito-sepolicy/bonito-sepolicy.mk
