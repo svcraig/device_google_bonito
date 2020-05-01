@@ -539,7 +539,8 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     wificond \
-    libwpa_client
+    libwpa_client \
+    WifiOverlay
 
 LIB_NL := libnl_2
 PRODUCT_PACKAGES += $(LIB_NL)
@@ -710,6 +711,9 @@ PRODUCT_PACKAGES += \
 #Set default CDMA subscription to RUIM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
+
+# Set network mode to Global by default and no DSDS/DSDA
+PRODUCT_PROPERTY_OVERRIDES += ro.telephony.default_network=10
 
 # Set display color mode to Automatic by default
 PRODUCT_PROPERTY_OVERRIDES += \
