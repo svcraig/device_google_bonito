@@ -319,6 +319,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.zram.first_wb_delay_mins=180 \
     ro.zram.periodic_wb_delay_hours=24 \
 
+# Enable reboot free DSDS
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.radio.reboot_on_modem_change=false
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    telephony.active_modems.max_count=2
+
 # Disable snapshot timer
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.snapshot_enabled=0 \
@@ -691,11 +698,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_COPY_FILES += \
-    device/google/bonito/hidl/android.hidl.base@1.0.so-32:system/lib/android.hidl.base@1.0.so \
-    device/google/bonito/hidl/android.hidl.base@1.0.so-64:system/lib64/android.hidl.base@1.0.so \
-    device/google/bonito/hidl/android.hidl.base@1.0.so-32:vendor/lib/android.hidl.base@1.0.so \
-    device/google/bonito/hidl/android.hidl.base@1.0.so-64:vendor/lib64/android.hidl.base@1.0.so \
+# TODO(b/139369543): remove android.hidl.base@1.0 in next release (Q+1)
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.base@1.0.vendor
 
 PRODUCT_PACKAGES += \
     ipacm \
@@ -871,4 +877,4 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=20
+	ro.vendor.build.svn=23
