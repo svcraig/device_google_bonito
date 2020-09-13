@@ -14,7 +14,22 @@
 # limitations under the License.
 #
 
-GAPPS_VARIANT := pico
+GAPPS_VARIANT := stock
+
+GAPPS_EXCLUDED_PACKAGES := \
+	VRService \
+	Duo \
+	AndroidAuto \
+	PlayGames \
+	Newsstand \
+	Music \
+	Movies \
+	TagGoogle \
+	Messenger \
+	Search \
+	Markup \
+	PrintServiceGoogle \
+	CloudPrint
 
 TARGET_CHIPSET := sdm710
 
